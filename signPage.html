@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyDhoL6QsF2wi5C9Q1F32zsHK8wNglZ8r8I",
+              authDomain: "introtoprogramming-53c2d.firebaseapp.com",
+              projectId: "introtoprogramming-53c2d",
+              storageBucket: "introtoprogramming-53c2d.appspot.com",
+              messagingSenderId: "31977718611",
+              appId: "1:31977718611:web:c8e49390bd110080f097a6"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            var db = firebase.firestore();
+        </script>
+    </head>
+    <body>
+        <div class="banner">
+            <h1>Python ile Programlamaya Giriş</h1>
+        </div>
+        <br>
+       
+        <div class="mainBody">
+            <div id="signScreen">
+
+                <h3>Bilgilendirme</h3><br>
+                <p>Bu program, programlamaya dair herhangi bir tecrübesi olmayan kişilere yönelik programlama giriş dersidir. Bilgisayar sahibi olmak ve basit bilgisayar kullanım becerileri
+                     haricinde herhanfi bir ön gereksinim yoktur. </p>
+                <p>Programa aktif ve pasif olarak iki türlü katılabilirsiniz. Aktif katılımcalardan derslerdeki uygulamaların ve verilen projelerin yapılması beklenecektir, pasif katılımcılar sadece dinleyebilir. Kodlama öğrenmenin büyük kısmı uygulayarak gerçekleştiğinden dersler uygulama ağırlıklı olacaktır. </p>
+                <p>1 Temmuz 2022'den itibaren başlayacaktır.</p>
+                <p>Program ücretsizdir.</p>
+                <h3>Genel Konular</h3>
+                <h5>* Değişebilir</h5>
+               <h5>- Değişkenler ve Veri Tipleri</h5>
+               <h5>- Operatörler</h5>
+               <h5>- Listeler</h5>
+               <h5>- If - Else İfadeleri </h5>
+               <h5>- Döngüler</h5>
+               <h5>- Fonksiyonlar</h5>
+               <p></p>
+                <h3>Kayıt Ol</h3>
+                <br><label>İsim </label> <input required id="uname">
+                <br><br>
+                <label>Soyisim </label> <input id="surname">
+                <br><br>
+                <label>Email </label> <input id="email">
+                <br><br>
+                <label>Telefon Numarası</label> <input id="telNo">
+                <br><br>
+                <label><u>Haftanın Tercih Ettiğiniz Günleri</u></label> <br><br>
+                <input onclick="dayCheckBoxClicked('pazPer')" type="checkbox" id="pazPer" name="pazPer">
+                <label for="pazPer">Pazartesi - Perşembe</label><br>
+                <input onclick="dayCheckBoxClicked('salCum')" type="checkbox" id="salCum" name="salCum">
+                <label for="activeCb">Salı - Cuma</label><br>
+                <input onclick="dayCheckBoxClicked('carCtesi')" type="checkbox" id="carCtesi" name="carCtesi">
+                <label for="activeCb">Çarşamba - Cumartesi</label><br>
+                <input onclick="dayCheckBoxClicked('perPazar')" type="checkbox" id="perPazar" name="perPazar">
+                <label for="activeCb">Perşembe - Pazar</label><br>
+                <label>Diğer</label> <input id="otherDays">
+                <br><br>
+                <label>Tercih Ettiğiniz Başlangıç Saati</label> <br>
+                <label>(Derslerin 2 saat sürmesi planlanmıştır)</label> 
+                <input type="time" id="startTime"> 
+                <br><br>
+                <label><u>Katılım Şekliniz </u></label> <br><br>
+                <input onclick="typeCheckBoxClicked('Active')" type="checkbox" id="isActive" name="activeCb">
+                <label for="activeCb">Aktif</label><br><br>
+                <input  onclick="typeCheckBoxClicked('Passive')" type="checkbox" id="isPassive" name="passiveCb">
+                <label for="passiveCb">Pasif</label><br>
+                <br><br>
+                <button onclick="onSignUpClick(uname.value, surname.value, email.value, telNo.value, otherDays.value, startTime.value )" style="height: 5%;">GÖNDER</button>
+                <label id="message"></label>
+            </div>
+        </div>
+    
+        </div>
+        </div>
+        <script >
+
+            var chosenDays = null
+            var stuType = null
+
+            function dayCheckBoxClicked(chosenValue){
+
+                switch (chosenValue) {
+
+                    case 'pazPer':
+                        chosenDays = 'Pazartesi - Perşembe'
+                        document.getElementById('salCum').checked = false
+                        document.getElementById('carCtesi').checked = false
+                        document.getElementById('perPazar').checked = false
+                        break;
+                
+                    case 'salCum':
+                        chosenDays = 'Salı - Cuma'
+                        document.getElementById('pazPer').checked = false
+                        document.getElementById('carCtesi').checked = false
+                        document.getElementById('perPazar').checked = false
+                        break;
+
+                    case 'carCtesi':
+                        chosenDays = 'Çarşamba - Cumartesi'
+                        document.getElementById('pazPer').checked = false
+                        document.getElementById('salCum').checked = false
+                        document.getElementById('perPazar').checked = false
+                        break;
+                    
+                    case 'perPazar':
+
+                        chosenDays = 'Perşembe - Pazar'
+                        document.getElementById('pazPer').checked = false
+                        document.getElementById('salCum').checked = false
+                        document.getElementById('carCtesi').checked = false
+                        break;
+
+                    default:
+                        chosenDays = null
+                        break;
+
+                }
+
+
+            }
+            
+            function typeCheckBoxClicked(typeName){
+
+                if (typeName == "Active"){
+                    stuType = typeName
+                    document.getElementById("isPassive").checked = false
+
+                }else if (typeName == "Passive"){
+                    stuType = typeName
+                    document.getElementById("isActive").checked = false
+                }
+
+            }
+            
+            
+            function onSignUpClick(uname, surname, email, telNo, otherDays, startTime){
+
+                if (chosenDays == null){
+                    chosenDays = otherDays
+                }
+
+                db.collection("Users").doc().set({
+                    name: uname,
+                    surname: surname,
+                    email: email,
+                    phone_number: telNo,
+                    preferredDays: chosenDays,
+                    startTime: startTime,
+                    learningType : stuType
+                })
+                    .then(() => {
+                        
+                        console.log("new record added to the db")
+                        location.reload()
+                    })
+                    .catch((err) => {
+                        document.getElementById("message").innerHTML = err
+                        console.log(err)})
+
+            }
+
+
+
+          </script>
+    </body>
+</html>
