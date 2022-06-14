@@ -31,6 +31,7 @@ label{
 }
 #signScreen{
     width: 95%;
+    height: 100%;
     text-align: center;
     margin: auto;
 }
@@ -66,8 +67,8 @@ button{
     
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
-    background-color: #ffd6ba;/*#ED9B40;*/
-    color: #2B0504;
+    background-color: #0d183c;/*#ED9B40;*/
+    color: #faf9f9;
     width: 50%;
     height: 15%;
     cursor: pointer;
