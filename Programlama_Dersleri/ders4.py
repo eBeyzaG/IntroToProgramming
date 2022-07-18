@@ -146,7 +146,7 @@ else:
 
 sayi_1 = float(input("İlk sayınızı giriniz"))
 sayi_2 = float(input("İkinci sayınızı giriniz."))
-islem_no = int(input("Yapmak istediğiniz işlemi seçiniz.\n1) Toplama\n2) Çıkarma\n3) Çarpma"))
+islem_no = int(input("Yapmak istediğiniz işlemi seçiniz.\n1) Toplama\n2) Çıkarma\n3) Çarpma\n4) Bölme\n5) Mod alma"))
 
 if islem_no == 1: #toplama
     sonuc = sayi_1 + sayi_2
@@ -157,6 +157,15 @@ elif islem_no == 2: #çıkarma
 elif islem_no == 3: #çarpma
     sonuc = sayi_1 * sayi_2
     print(sayi_1, "*", sayi_2, "=", sonuc)
+elif islem_no == 4: #bölme
+    sonuc = sayi_1 / sayi_2
+    print(sayi_1, "/", sayi_2, "=", sonuc )
+elif islem_no == 5: #mod alma
+    sonuc = sayi_1 % sayi_2
+    print(sayi_1, "%", sayi_2, "=", sonuc)
+else:
+    print("Hatalı işlem seçtiniz.")
+
 
 #ÖDEV
 # BÖLME VE MOD ALMA ÖZELLİKLERİNİ EKLEYİN hatalı durumları da kontrol edin
