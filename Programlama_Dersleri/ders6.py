@@ -54,8 +54,9 @@ while True:
         "2) Kitapları Listele\n" +
         "3) Kitap Düzenle\n" +
         "4) Kitap Sil\n" +
-        "5) Kitap Adıyla ID Bul\n"
-        "6) Çıkış\n"
+        "5) Kitap Adıyla ID Bul\n" +
+        "6) Yazar Adıyla Kitap Bul\n" +
+        "7) Çıkış\n"
     )
     if islem_no == "1": #yeni kitap ekle
         kitap_adi = input("Kitap adını giriniz\n")
@@ -73,7 +74,6 @@ while True:
         }
         kitap_ID += 1
         print("Kitap başarıyla eklendi.")
-
     elif islem_no == "2": #kitapları listele
         for id, kitap in kutuphane.items():
             print("ID:", id)
@@ -84,7 +84,6 @@ while True:
             print("Sayfa Sayısı:", kitap["sayfaSayisi"])
             print("Yayınevi:", kitap["yayınevi"])
             print("------------------------------------")
-
     elif islem_no == "3": #kitap düzenle
         duzenlenecek_kitap_id = int(input("Düzenlemek istediğiniz kitabın ID'sini  giriniz."))
         
@@ -133,18 +132,39 @@ while True:
             if kitap["kitapAdi"] == aranan_kitap_adi:
                 print("ID:", id)
                 print("Kitap Adı", kitap["kitapAdi"])
-                print("Yazarlar:\n")
+                print("Yazarlar:")
                 for yazar in kitap["yazarlar"]:
                     print("-", yazar)
                 print("Sayfa Sayısı:", kitap["sayfaSayisi"])
                 print("Yayınevi:", kitap["yayınevi"])
+                print("----------------------------------")
                 kitap_bulundu_mu = True
         
         if not kitap_bulundu_mu: #kitap listede yoksa
-            print(aranan_kitap_adi, "ismine sahip bir kitap bulunamadı.")
-    
-    
-    elif islem_no == "6": #çıkış
+            print(aranan_kitap_adi, "ismine sahip bir kitap bulunamadı.") 
+    elif islem_no == "6": #yazar adı ile id/kitap bul
+        aranacak_yazar_adi = input("Aradığınız yazarı giriniz.\n")
+
+        bulundu_mu = False
+
+        for kitap_id, kitap in kutuphane.items():
+            if aranacak_yazar_adi in kitap['yazarlar']:
+                print("ID:", kitap_id)
+                print("Kitap Adı:", kitap['kitapAdi'])
+                print("Yazarlar:")
+                for yazar in kitap['yazarlar']:
+                    print("-", yazar)
+                print("Sayfa Sayısı:", kitap["sayfaSayisi"])
+                print("Yayınevi:", kitap["yayınevi"])
+                bulundu_mu = True
+        
+        if not bulundu_mu:
+            print("Bu yazara sahip bir kitap bulunmamaktadır.")
+    elif islem_no == "7": #çıkış
         break
     else:
         print("Hatalı işlem seçtiniz.")
+
+# ÖDEV
+# derste yapılan projeye yeni bir özellik ekle
+# girilen yazar adına sahip kitapları listele 

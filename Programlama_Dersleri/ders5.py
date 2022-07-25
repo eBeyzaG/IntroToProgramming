@@ -148,7 +148,7 @@ for sayi in sayi_listesi:
         print(sayi, "tek sayıdır.")
     elif sayi % 2 == 0:
         print(sayi, "çift sayıdır")
-'''
+
 yazi = "Merhaba benim adım Beyza. Tanıştığıma memnun oldum."
 #cümlede kaç boşluk olduğunu hesaplayan program
 bosluk_sayisi = 0
@@ -158,4 +158,14 @@ for karakter in yazi:
         bosluk_sayisi += 1
 
 print("Boşluk sayısı:", bosluk_sayisi)
+'''
+'''
+Fizz Buzz:
+0 ile 100 arasındaki sayılar için
+Sayı 3 ile bölünüyorsa ekrana “Fizz” yazdır
+Sayı 5 ile bölünüyorsa ekrana “Buzz” yazdır
+İkisine de bölünüyorsa “Fizz Buzz” yazdır
+'''
+
+
 
