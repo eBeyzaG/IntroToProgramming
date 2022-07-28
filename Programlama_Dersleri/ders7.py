@@ -146,3 +146,6 @@ def en_buyuk_deger_bul(sayi_listesi):
 
 sayilar = [12, 43, 65, 78, 100]
 print(en_buyuk_deger_bul(sayilar))
+
+#ÖDEV
+#parametre olarak aldığı sayının çift mi tek mi olduğunu string olarak döndüren fonksiyon
